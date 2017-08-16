@@ -52,7 +52,7 @@ describe('Search Functionality', function() {
 				return
 			})
 			.catch(error => console.log(error))
-    })
+  })
 
 	it('Can search from article and get to SRP', async function () {
 		const chromeless = new Chromeless()
