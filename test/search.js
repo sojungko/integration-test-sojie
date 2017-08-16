@@ -3,9 +3,10 @@ import expect from 'expect'
 require('dotenv').config({silent: true})
 
 describe('Search Functionality', function() {
+	const CHROMELESS_OPTIONS = {debug: true, implicitWait: true}
 
 	it('Can search on homepage and get to SRP', async function () {
-		const chromeless = new Chromeless()
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		console.log('starting...1')
 		return await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=national`)
@@ -22,7 +23,7 @@ describe('Search Functionality', function() {
 	})
 
 	it('Can search from SRP and get to another SRP', async function () {
-		const chromeless = new Chromeless()
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		console.log('starting...2')
 		return await chromeless
 			.goto(`${process.env.ORIGIN}/search/atlanta-ga`)
@@ -39,7 +40,7 @@ describe('Search Functionality', function() {
 	})
 
 	it('Can search from LDP and get to SRP', async function () {
-		const chromeless = new Chromeless()
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		console.log('starting...3')
 		return await chromeless
 			.goto(`${process.env.ORIGIN}/search/binder-ca?property_id=2593658897`)
@@ -56,7 +57,7 @@ describe('Search Functionality', function() {
   })
 
 	it('Can search from article and get to SRP', async function () {
-		const chromeless = new Chromeless()
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		console.log('starting...4')
 		return await chromeless
 			.goto(`${process.env.ORIGIN}/articles/essential-design-tips-every-renter-should-know`)
@@ -72,7 +73,7 @@ describe('Search Functionality', function() {
 	})
 
 	it('Can search using search button', async function () {
-		const chromeless = new Chromeless()
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		console.log('starting...5')
 		return await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=national`)
@@ -89,7 +90,7 @@ describe('Search Functionality', function() {
 	})
 
 	it('Can search for national city via typeahead and get to SRP', async function () {
-		const chromeless = new Chromeless()
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		console.log('starting...6')
 		return await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=national`)
@@ -109,7 +110,7 @@ describe('Search Functionality', function() {
 	})
 
 	it('Can search for featured neighborhood on locale page via typeahead get to SRP', async function () {
-		const chromeless = new Chromeless()
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		console.log('starting...7')
 		return await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=phoenix-az`)
