@@ -1,18 +1,20 @@
 import { Chromeless } from 'chromeless'
 import expect from 'expect'
 require('dotenv').config({silent: true})
-const chromeless = new Chromeless()
+
+const CHROMELESS_OPTIONS = {debug: true, implicitWait: true}
+const chromeless = new Chromeless(CHROMELESS_OPTIONS)
+
 describe('Search Functionality', function() {
-	const CHROMELESS_OPTIONS = {debug: true, implicitWait: true}
 
 	it('Can search on homepage and get to SRP', async function () {
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=national`)
 			.wait('input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
 			.type('New York, NY\r', 'input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
-			.wait('.srpWrap_1s6rj7t')
 			.evaluate(() => document.URL)
-			 	expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
+			
+		expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
 
 	})
 
@@ -22,10 +24,9 @@ describe('Search Functionality', function() {
 			.goto(`${process.env.ORIGIN}/search/atlanta-ga`)
 			.wait('input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.type('Chicago, IL\r', 'input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
-			.wait('.srpWrap_1s6rj7t')
 			.evaluate(() => document.URL)
+		
 			expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il`)
-
 	})
 
 	it('Can search from LDP and get to SRP', async function () {
@@ -33,12 +34,11 @@ describe('Search Functionality', function() {
 			.goto(`${process.env.ORIGIN}/search/binder-ca?property_id=2593658897`)
 			.wait('input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.type('Brooklyn\r', 'input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
-			.wait('.srpWrap_1s6rj7t')
 			.evaluate(() => document.URL)
 				
-			expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
-			await chromeless.end();
-			})
+		expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
+		await chromeless.end();
+	})
 
 
 	// it('Can search from article and get to SRP', async function () {
