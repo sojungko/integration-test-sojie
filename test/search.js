@@ -2,7 +2,7 @@ import { Chromeless } from 'chromeless'
 import expect from 'expect'
 require('dotenv').config({silent: true})
 
-const CHROMELESS_OPTIONS = {debug: true, implicitWait: true}
+const CHROMELESS_OPTIONS = {debug: true, implicitWait: true, waitTimeout: 15000}
 const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 
 describe('Search Functionality', function() {
