@@ -1,1 +1,1 @@
-web: xvfb-run --server-args='-screen 0, 1024x768x16' google-chrome -start-maximized node dist/server/server.js
+web: xvfb-run --server-args='-screen 0, 1024x768x16' google-chrome -start-maximized node dist/server/server.js dotenv_config_silent=true

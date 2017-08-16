@@ -1,5 +1,6 @@
 import { Chromeless } from 'chromeless'
 import expect from 'expect'
+require('dotenv').config({silent: true})
 
 describe('Search Functionality', function() {
 
