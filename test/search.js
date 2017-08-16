@@ -70,6 +70,7 @@ describe('Search Functionality', function() {
 				expect(res).toEqual(`${process.env.ORIGIN}/search/chicago-il/west-loop`)
 				return
 			})
+			.catch(error => console.log(error))
 	})
 
 	it('Can search using search button', async function () {
@@ -87,6 +88,7 @@ describe('Search Functionality', function() {
 				expect(res).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
 				return
 			})
+			.catch(error => console.log(error))
 	})
 
 	it('Can search for national city via typeahead and get to SRP', async function () {
@@ -107,6 +109,7 @@ describe('Search Functionality', function() {
 				expect(res).toEqual(`${process.env.ORIGIN}/search/san-francisco-ca`)
 				return
 			})
+			.catch(error => console.log(error))
 	})
 
 	it('Can search for featured neighborhood on locale page via typeahead get to SRP', async function () {
@@ -127,5 +130,6 @@ describe('Search Functionality', function() {
 				expect(res).toEqual(`${process.env.ORIGIN}/search/chandler-az`)
 				return
 			})
+			.catch(error => console.log(error))
 	})
 })
