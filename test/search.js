@@ -12,7 +12,7 @@ describe('Search Functionality', function() {
 			.goto(`${process.env.ORIGIN}/?locale=national`)
 			.wait('input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
 			.type('New York, NY\r', 'input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
-			.wait('.srpList_1sc4ubv')
+			.wait('.titleLineTwo_5t3qj4')
 			.evaluate(() => document.URL)
 			
 		expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
@@ -25,7 +25,7 @@ describe('Search Functionality', function() {
 			.goto(`${process.env.ORIGIN}/search/atlanta-ga`)
 			.wait('input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.type('Chicago, IL\r', 'input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
-			.wait('.srpList_1sc4ubv')
+			.wait('.titleLineTwo_5t3qj4')
 			.evaluate(() => document.URL)
 		
 			expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il`)
@@ -36,7 +36,7 @@ describe('Search Functionality', function() {
 			.goto(`${process.env.ORIGIN}/search/binder-ca?property_id=2593658897`)
 			.wait('input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.type('Brooklyn\r', 'input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
-			.wait('.srpList_1sc4ubv')
+			.wait('.titleLineTwo_5t3qj4')
 			.evaluate(() => document.URL)
 				
 		expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
