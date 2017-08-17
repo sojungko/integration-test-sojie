@@ -2,11 +2,12 @@ import { Chromeless } from 'chromeless'
 import expect from 'expect'
 require('dotenv').config({silent: true})
 const CHROMELESS_OPTIONS = {debug: true}
-const chromeless = new Chromeless(CHROMELESS_OPTIONS)
+
 
 describe('Search Functionality', async function() {
 	it('Can search on homepage and get to SRP', async function () {
-		this.timeout(50000);
+		this.timeout(30000);
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=national`)
 			.wait('input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
@@ -14,11 +15,13 @@ describe('Search Functionality', async function() {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
+			await chromeless.end();
 			await expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
 	})
 
 	it('Can search from SRP and get to another SRP', async function () {
-		this.timeout(50000);
+		this.timeout(30000);
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/search/atlanta-ga`)
 			.wait('input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
@@ -26,12 +29,14 @@ describe('Search Functionality', async function() {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-			await expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il`)
+			await chromeless.end();
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il`)
 		
 		})
 
 	it('Can search from LDP and get to SRP', async function () {
-		this.timeout(50000);
+		this.timeout(30000);
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/search/binder-ca?property_id=2593658897`)
 			.wait('input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
@@ -39,13 +44,15 @@ describe('Search Functionality', async function() {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-			await expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
+			await chromeless.end();
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
 		
 	})
 
 
 	it('Can search from article and get to SRP', async function () {
-		this.timeout(50000);
+		this.timeout(30000);
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/articles/essential-design-tips-every-renter-should-know`)
 			.wait('input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
@@ -53,11 +60,13 @@ describe('Search Functionality', async function() {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-			await expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il/west-loop`)
+			await chromeless.end();
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il/west-loop`)
 	})
 
 	it('Can search using search button', async function () {
-		this.timeout(50000);
+		this.timeout(30000);
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=national`)
 			.wait('input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
@@ -65,12 +74,13 @@ describe('Search Functionality', async function() {
 			.click('button[class="searchButton_xb5mu5-o_O-homeSearchButton_1c55jrk"]')
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
-
-			await expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
+			await chromeless.end();
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
 	})
 
 	it('Can search for national city via typeahead and get to SRP', async function () {
-		this.timeout(50000);
+		this.timeout(30000);
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=national`)
 			.wait('input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
@@ -81,11 +91,13 @@ describe('Search Functionality', async function() {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-			await expect(URL).toEqual(`${process.env.ORIGIN}/search/san-francisco-ca`)
+			await chromeless.end();
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/san-francisco-ca`)
 	})
 
 	it('Can search for featured neighborhood on locale page via typeahead get to SRP', async function () {
-		this.timeout(50000);
+		this.timeout(30000);
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=national`)
 			.wait('input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
@@ -96,7 +108,8 @@ describe('Search Functionality', async function() {
 			.type('\r')
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
+
 			await chromeless.end();
-			await expect(URL).toEqual(`${process.env.ORIGIN}/search/chandler-az`)
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/chandler-az`)
 	})
 })
