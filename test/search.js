@@ -1,10 +1,10 @@
 import { Chromeless } from 'chromeless'
 import expect from 'expect'
 require('dotenv').config({silent: true})
-const chromeless = new Chromeless()
-describe('Search Functionality', function() {
-	const CHROMELESS_OPTIONS = {debug: true}
+const CHROMELESS_OPTIONS = {debug: true}
+const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 
+describe('Search Functionality', async function() {
 	it('Can search on homepage and get to SRP', async function () {
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=national`)
@@ -25,8 +25,8 @@ describe('Search Functionality', function() {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 			expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il`)
-
-	})
+		
+		})
 
 	it('Can search from LDP and get to SRP', async function () {
 		const URL = await chromeless
@@ -36,9 +36,9 @@ describe('Search Functionality', function() {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 				
-			expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
-			await chromeless.end();
-			})
+		expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
+		await chromeless.end();
+	})
 
 
 	// it('Can search from article and get to SRP', async function () {
