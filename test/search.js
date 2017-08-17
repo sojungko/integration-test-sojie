@@ -2,10 +2,11 @@ import { Chromeless } from 'chromeless'
 import expect from 'expect'
 require('dotenv').config({silent: true})
 const CHROMELESS_OPTIONS = {debug: true}
-const chromeless = new Chromeless(CHROMELESS_OPTIONS)
+
 
 describe('Search Functionality', async function() {
 	it('Can search on homepage and get to SRP', async function () {
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=national`)
 			.wait('input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
@@ -13,31 +14,37 @@ describe('Search Functionality', async function() {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 			console.log(URL)
+
+			await chromeless.end();
 			expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
 	})
 
 	it('Can search from SRP and get to another SRP', async function () {
-
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/search/atlanta-ga`)
 			.wait('input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.type('Chicago, IL\r', 'input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
+
+			await chromeless.end();
 			expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il`)
 		
 		})
 
 	it('Can search from LDP and get to SRP', async function () {
+		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/search/binder-ca?property_id=2593658897`)
 			.wait('input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.type('Brooklyn\r', 'input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
-				
+			
+			await chromeless.end();
 		expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
-		await chromeless.end();
+		
 	})
 
 
