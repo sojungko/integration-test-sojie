@@ -6,6 +6,7 @@ const CHROMELESS_OPTIONS = {debug: true}
 
 describe('Search Functionality', async function() {
 	it('Can search on homepage and get to SRP', async function () {
+		this.timeout(10000);
 		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=national`)
@@ -15,11 +16,12 @@ describe('Search Functionality', async function() {
 			.evaluate(() => document.URL)
 			console.log(URL)
 
-			await chromeless.end();
 			expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
+			await chromeless.end();
 	})
 
 	it('Can search from SRP and get to another SRP', async function () {
+		this.timeout(10000);
 		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/search/atlanta-ga`)
@@ -28,12 +30,13 @@ describe('Search Functionality', async function() {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-			await chromeless.end();
 			expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il`)
+			await chromeless.end();
 		
 		})
 
 	it('Can search from LDP and get to SRP', async function () {
+		this.timeout(10000);
 		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/search/binder-ca?property_id=2593658897`)
@@ -41,9 +44,9 @@ describe('Search Functionality', async function() {
 			.type('Brooklyn\r', 'input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
-			
+
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
 			await chromeless.end();
-		expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
 		
 	})
 
