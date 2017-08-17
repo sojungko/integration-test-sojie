@@ -6,7 +6,7 @@ const CHROMELESS_OPTIONS = {debug: true}
 
 describe('Search Functionality', async function() {
 	it('Can search on homepage and get to SRP', async function () {
-		this.timeout(10000);
+		// this.timeout(10000);
 		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/?locale=national`)
@@ -21,7 +21,7 @@ describe('Search Functionality', async function() {
 	})
 
 	it('Can search from SRP and get to another SRP', async function () {
-		this.timeout(10000);
+		// this.timeout(10000);
 		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/search/atlanta-ga`)
@@ -36,7 +36,7 @@ describe('Search Functionality', async function() {
 		})
 
 	it('Can search from LDP and get to SRP', async function () {
-		this.timeout(10000);
+		// this.timeout(10000);
 		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
 			.goto(`${process.env.ORIGIN}/search/binder-ca?property_id=2593658897`)
