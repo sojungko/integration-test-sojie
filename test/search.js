@@ -91,7 +91,7 @@ describe('Search Functionality', async function() {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-			expect(res).toEqual(`${process.env.ORIGIN}/search/san-francisco-ca`)
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/san-francisco-ca`)
 			await chromeless.end();
 	})
 
@@ -102,13 +102,14 @@ describe('Search Functionality', async function() {
 			.goto(`${process.env.ORIGIN}/?locale=national`)
 			.wait('input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
 			.type('Chandler', 'input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
+			.wait(1000)
 			.wait('.suggestionsList_1gynej2-o_O-homeSuggestionsList_1mpea8g')
 			.press(40)
 			.type('\r')
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-			expect(res).toEqual(`${process.env.ORIGIN}/search/chandler-az`)
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/chandler-az`)
 			await chromeless.end();
 	})
 })
