@@ -14,7 +14,6 @@ describe('Search Functionality', async function() {
 			.type('New York, NY\r', 'input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
-			console.log(URL)
 
 			expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
 			await chromeless.end();
