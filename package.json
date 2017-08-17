@@ -4,7 +4,7 @@
   "description": "",
   "main": "test/search.js",
   "scripts": {
-    "chrome": "nodemon chrome.js",
+    "chrome": "node chrome.js",
     "test": "mocha -r setup -r dotenv/config --timeout 20000 --compilers js:babel-register --recursive test",
     "begin": "concurrently 'npm run chrome'  'npm run test'"
   },
