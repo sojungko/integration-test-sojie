@@ -4,11 +4,13 @@
   "description": "",
   "main": "test/search.js",
   "scripts": {
-    "test": "mocha -r setup -r dotenv/config --timeout 20000 --compilers js:babel-register --recursive test"
+    "chrome": "node chrome.js",
+    "test": "mocha -r setup -r dotenv/config --timeout 20000 --compilers js:babel-register --recursive test",
+    "begin": "concurrently 'npm run chrome'  'npm run test'"
   },
   "license": "ISC",
   "engines": {
-    "node": "6.8.1"
+    "node": "6.11.1"
   },
   "dependencies": {
     "babel-cli": "^6.24.0",
@@ -20,6 +22,7 @@
     "chrome-launcher": "^0.4.0",
     "chrome-remote-interface": "^0.24.3",
     "chromeless": "^1.2.0",
+    "concurrently": "^3.5.0",
     "debug": "^2.6.3",
     "dotenv": "^2.0.0",
     "expect": "^1.20.2",
