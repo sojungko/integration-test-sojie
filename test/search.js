@@ -101,7 +101,6 @@ describe('Search Functionality', async function () {
 			.goto(`${process.env.ORIGIN}/?locale=phoenix-az`)
 			.wait('input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
 			.type('Chandler', 'input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
-			.wait(3000)
 			.wait('.suggestionsList_1gynej2-o_O-homeSuggestionsList_1mpea8g')
 			.press(40)
 			.type('\r')
