@@ -18,20 +18,20 @@ export default function startTests (origin = process.env.ENDPOINT) {
         log(err)
       }
 
-      exec(`curl -X POST --data-urlencode 'payload={
-        "channel": "#${process.env.SLACK_CHANNEL}",
-        "username": "integration-bot",
-        "text": ${JSON.stringify(message)},
-        "icon_emoji": ":success:"
-      }' ${process.env.SLACK_URL}`, (err, stdout, stderr) => {
+      // exec(`curl -X POST --data-urlencode 'payload={
+      //   "channel": "#${process.env.SLACK_CHANNEL}",
+      //   "username": "integration-bot",
+      //   "text": ${JSON.stringify(message)},
+      //   "icon_emoji": ":success:"
+      // }' ${process.env.SLACK_URL}`, (err, stdout, stderr) => {
 
-        if (stdout !== 'ok') {
-          log(`Error posting to #${process.env.SLACK_CHANNEL} -- Output: ${stdout}`)
-        } else {
-          log(`Posted to #${process.env.SLACK_CHANNEL}`)
-        }
+      //   if (stdout !== 'ok') {
+      //     log(`Error posting to #${process.env.SLACK_CHANNEL} -- Output: ${stdout}`)
+      //   } else {
+      //     log(`Posted to #${process.env.SLACK_CHANNEL}`)
+      //   }
 
-      })
+      // })
     })
   }, process.env.TEST_DELAY)
 }
