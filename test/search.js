@@ -59,7 +59,7 @@ describe('Search Functionality', async function () {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-		// await chromeless.end();
+		await chromeless.end();
 		expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il/west-loop`)
 	})
 
