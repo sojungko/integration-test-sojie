@@ -12,10 +12,9 @@ describe('Search Functionality', async function () {
 			.wait('input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
 			.type('New York, NY\r', 'input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
 			.wait('.srpList_1sc4ubv')
-			.end()
 			.evaluate(() => document.URL)
 
-		// await chromeless.end();
+		await chromeless.end();
 		await expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
 	})
 
@@ -27,10 +26,9 @@ describe('Search Functionality', async function () {
 			.wait('input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.type('Chicago, IL\r', 'input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.wait('.srpList_1sc4ubv')
-			.end()
 			.evaluate(() => document.URL)
 
-		// await chromeless.end();
+		await chromeless.end();
 		expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il`)
 
 	})
@@ -43,10 +41,9 @@ describe('Search Functionality', async function () {
 			.wait('input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.type('Brooklyn\r', 'input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.wait('.srpList_1sc4ubv')
-			.end()
 			.evaluate(() => document.URL)
 
-		// await chromeless.end();
+		await chromeless.end();
 		expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
 
 	})
@@ -60,10 +57,9 @@ describe('Search Functionality', async function () {
 			.wait('input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.type('West Loop\r', 'input[class="input_m7611f-o_O-navBarInput_1awpofx search-box-placeholder"]')
 			.wait('.srpList_1sc4ubv')
-			.end()
 			.evaluate(() => document.URL)
 
-		// await chromeless.end();
+		await chromeless.end();
 		expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il/west-loop`)
 	})
 
@@ -76,9 +72,8 @@ describe('Search Functionality', async function () {
 			.type('New York, NY', 'input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
 			.click('button[class="searchButton_xb5mu5-o_O-homeSearchButton_1c55jrk"]')
 			.wait('.srpList_1sc4ubv')
-			.end()
 			.evaluate(() => document.URL)
-		// await chromeless.end();
+		await chromeless.end();
 		expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
 	})
 
@@ -93,10 +88,9 @@ describe('Search Functionality', async function () {
 			.press(40)
 			.type('\r')
 			.wait('.srpList_1sc4ubv')
-			.end()
 			.evaluate(() => document.URL)
 
-		// await chromeless.end();
+		await chromeless.end();
 		expect(URL).toEqual(`${process.env.ORIGIN}/search/san-francisco-ca`)
 	})
 
