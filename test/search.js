@@ -1,7 +1,9 @@
 import { Chromeless } from 'chromeless'
 import expect from 'expect'
 require('dotenv').config({ silent: true })
-const CHROMELESS_OPTIONS = { debug: true }
+const CHROMELESS_OPTIONS = {
+	// debug: true
+}
 
 describe('Search Functionality', async function () {
 	it('Can search on homepage and get to SRP', async function () {
