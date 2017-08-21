@@ -98,7 +98,7 @@ describe('Search Functionality', async function () {
 		this.timeout(70000);
 		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
-			.goto(`${process.env.ORIGIN}/?locale=national`)
+			.goto(`${process.env.ORIGIN}/?locale=phoenix-az`)
 			.wait('input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
 			.type('Chandler', 'input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
 			.wait(3000)
