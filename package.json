@@ -6,7 +6,15 @@
   "scripts": {
     "chrome": "node chrome.js",
     "test": "mocha -r setup -r dotenv/config --timeout 20000 --compilers js:babel-register --recursive test",
-    "begin": "concurrently 'npm run chrome'  'npm run test'"
+    "begin": "concurrently 'npm run chrome'  'npm run test'",
+    "build": "babel src --out-dir dist --source-maps --copy-files",
+    "build:clean": "rm -rf dist",
+    "build:watch": "babel src --watch --out-dir dist",
+    "dev": "npm run server:watch",
+    "server:watch": "nodemon src/server/server.js --exec 'node -r dotenv/config -r babel-register --inspect=9225' --delay 100ms",
+    "sound": "node -r babel-register player/play",
+    "scheduled-test": "node -r dotenv/config dist/lib/scheduled-test",
+    "postinstall": "npm run build:clean && npm run build"        
   },
   "license": "ISC",
   "engines": {
