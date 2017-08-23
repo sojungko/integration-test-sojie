@@ -6,11 +6,19 @@
   "scripts": {
     "chrome": "node chrome.js",
     "test": "mocha -r setup -r dotenv/config --timeout 20000 --compilers js:babel-register --recursive test",
-    "begin": "concurrently 'npm run chrome'  'npm run test'"
+    "begin": "concurrently 'npm run chrome'  'npm run test'",
+    "build": "babel src --out-dir dist --source-maps --copy-files",
+    "build:clean": "rm -rf dist",
+    "build:watch": "babel src --watch --out-dir dist",
+    "dev": "npm run server:watch",
+    "server:watch": "nodemon src/server/server.js --exec 'node -r dotenv/config -r babel-register --inspect=9225' --delay 100ms",
+    "sound": "node -r babel-register player/play",
+    "scheduled-test": "node -r dotenv/config dist/lib/scheduled-test",
+    "postinstall": "npm run build:clean && npm run build"
   },
   "license": "ISC",
   "engines": {
-    "node": "6.11.1"
+    "node": "6.8.1"
   },
   "dependencies": {
     "babel-cli": "^6.24.0",
@@ -19,14 +27,23 @@
     "babel-preset-es2015-node6": "^0.4.0",
     "babel-preset-es2017": "^6.24.1",
     "babel-register": "^6.9.0",
+    "basic-auth": "^1.1.0",
+    "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.2",
+    "child_process": "^1.0.2",
     "chrome-launcher": "^0.4.0",
     "chrome-remote-interface": "^0.24.3",
     "chromeless": "^1.2.0",
     "concurrently": "^3.5.0",
-    "debug": "^2.6.3",
+    "debug": "^3.0.0",
     "dotenv": "^2.0.0",
     "expect": "^1.20.2",
+    "express": "^4.15.4",
+    "helmet": "^3.8.1",
+    "lodash.get": "^4.4.2",
     "mocha": "^3.2.0",
+    "morgan": "^1.8.2",
+    "request-promise": "^4.2.1",
     "setup": "^0.0.3"
   },
   "devDependencies": {
