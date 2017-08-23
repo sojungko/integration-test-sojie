@@ -1,8 +1,9 @@
 import { Chromeless } from 'chromeless'
 import expect from 'expect'
-require('dotenv').config({silent: true})
-const CHROMELESS_OPTIONS = {debug: true}
-
+require('dotenv').config({ silent: true })
+const CHROMELESS_OPTIONS = {
+	// debug: true
+}
 
 describe('Search Functionality', async function() {
 	it('Can search on homepage and get to SRP', async function () {
@@ -99,10 +100,9 @@ describe('Search Functionality', async function() {
 		this.timeout(70000);
 		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
 		const URL = await chromeless
-			.goto(`${process.env.ORIGIN}/?locale=national`)
+			.goto(`${process.env.ORIGIN}/?locale=phoenix-az`)
 			.wait('input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
 			.type('Chandler', 'input[class="input_m7611f-o_O-homeInput_1euh3ve search-box-placeholder"]')
-			.wait(3000)
 			.wait('.suggestionsList_1gynej2-o_O-homeSuggestionsList_1mpea8g')
 			.press(40)
 			.type('\r')
