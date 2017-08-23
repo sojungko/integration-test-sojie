@@ -5,7 +5,7 @@ const CHROMELESS_OPTIONS = {
 	// debug: true
 }
 
-describe('Search Functionality', async function () {
+describe('Search Functionality', async function() {
 	it('Can search on homepage and get to SRP', async function () {
 		this.timeout(70000);
 		const chromeless = new Chromeless(CHROMELESS_OPTIONS)
@@ -16,8 +16,8 @@ describe('Search Functionality', async function () {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-		await chromeless.end();
-		await expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
+			await chromeless.end();
+			await expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
 	})
 
 	it('Can search from SRP and get to another SRP', async function () {
@@ -30,10 +30,10 @@ describe('Search Functionality', async function () {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-		await chromeless.end();
-		expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il`)
-
-	})
+			await chromeless.end();
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il`)
+		
+		})
 
 	it('Can search from LDP and get to SRP', async function () {
 		this.timeout(70000);
@@ -45,9 +45,9 @@ describe('Search Functionality', async function () {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-		await chromeless.end();
-		expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
-
+			await chromeless.end();
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/brooklyn-ny`)
+		
 	})
 
 
@@ -61,8 +61,8 @@ describe('Search Functionality', async function () {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-		await chromeless.end();
-		expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il/west-loop`)
+			await chromeless.end();
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/chicago-il/west-loop`)
 	})
 
 	it('Can search using search button', async function () {
@@ -75,8 +75,8 @@ describe('Search Functionality', async function () {
 			.click('button[class="searchButton_xb5mu5-o_O-homeSearchButton_1c55jrk"]')
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
-		await chromeless.end();
-		expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
+			await chromeless.end();
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/new-york-ny`)
 	})
 
 	it('Can search for national city via typeahead and get to SRP', async function () {
@@ -92,8 +92,8 @@ describe('Search Functionality', async function () {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-		await chromeless.end();
-		expect(URL).toEqual(`${process.env.ORIGIN}/search/san-francisco-ca`)
+			await chromeless.end();
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/san-francisco-ca`)
 	})
 
 	it('Can search for featured neighborhood on locale page via typeahead get to SRP', async function () {
@@ -109,7 +109,7 @@ describe('Search Functionality', async function () {
 			.wait('.srpList_1sc4ubv')
 			.evaluate(() => document.URL)
 
-		await chromeless.end();
-		expect(URL).toEqual(`${process.env.ORIGIN}/search/chandler-az`)
+			await chromeless.end();
+			expect(URL).toEqual(`${process.env.ORIGIN}/search/chandler-az`)
 	})
 })
